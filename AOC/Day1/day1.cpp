@@ -1,13 +1,8 @@
-#include <iostream>
-#include <stdio.h>
-#include <curl/curl.h>
-#include <fstream>
-#include <string>
-#include <vector>
+#include "day1.h"
 
-int main() {
-
-  std::ifstream file("/home/incubed/AdventOfCode/advent_of_code_2020/Day1/sources/day_1_input.txt");
+void day1::calculate()
+{
+  std::ifstream file("/home/incubed/AdventOfCode/advent_of_code_2020/AOC/sources/day_1_input.txt");
   std::vector<int> values;
 
   for(std::string value; std::getline(file, value);)
@@ -53,5 +48,4 @@ int main() {
     }
     if (found) break;
   }
-  return 0;
 }
