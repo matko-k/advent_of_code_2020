@@ -1,7 +1,7 @@
 #include "day2.h"
 #include <regex>
 
-void day2::calculate()
+void Day2::calculate()
 {
   std::ifstream file("/home/incubed/AdventOfCode/advent_of_code_2020/AOC/sources/day_2_input.txt");
   std::vector<std::string> values;

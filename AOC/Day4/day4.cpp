@@ -1,7 +1,7 @@
 #include "day4.h"
 #include <regex>
 
-void day4::calculate()
+void Day4::calculate()
 {
   std::ifstream file("/home/incubed/AdventOfCode/advent_of_code_2020/AOC/sources/day_4_input.txt");
   std::vector<std::string> passports {};
@@ -91,12 +91,12 @@ void day4::calculate()
   std::cout<<"Valid advanced passports: "<<valid_advanced_count<<std::endl;
 }
 
-bool day4::checkPassport(Passport passport)
+bool Day4::checkPassport(Passport passport)
 {
   return !(passport.byr.empty() || passport.iyr.empty() || passport.eyr.empty() || passport.hgt.empty() || passport.hcl.empty() || passport.ecl.empty() || passport.pid.empty());
 }
 
-bool day4::checkPassport_advanced(Passport passport)
+bool Day4::checkPassport_advanced(Passport passport)
 {
   bool all_fields_present = !(passport.byr.empty() || passport.iyr.empty() || passport.eyr.empty() || passport.hgt.empty() || passport.hcl.empty() || passport.ecl.empty() || passport.pid.empty());
   bool byr_valid = passport.byr.length() == 4 && stoi(passport.byr) >= 1920 && stoi(passport.byr) <= 2002;

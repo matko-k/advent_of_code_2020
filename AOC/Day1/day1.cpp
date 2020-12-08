@@ -1,6 +1,6 @@
 #include "day1.h"
 
-void day1::calculate()
+void Day1::calculate()
 {
   std::ifstream file("/home/incubed/AdventOfCode/advent_of_code_2020/AOC/sources/day_1_input.txt");
   std::vector<int> values;
