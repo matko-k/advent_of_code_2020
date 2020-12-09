@@ -17,7 +17,6 @@ void Day2::calculate()
   int valid_passes = 0;
   int valid_passes2 = 0;
 
-  // part 1
   for(std::string s: values)
   {
     if(std::regex_search(s, matches, regex)) {

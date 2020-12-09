@@ -7,12 +7,11 @@ class Day7 : Day {
 
 struct Bag
         {
-          std::vector<bag_pair> contained_bags;
-          std::vector<std::string> bags_this_one_is_contained_in;
-
           std::string name;
-
           Bag(std::string new_name) : name{new_name} {};
+
+          std::vector<bag_pair> contained_bags;
+          std::vector<std::string> container_bags;
 
           void contains_bag(std::string name, int amount)
           {
@@ -20,9 +19,9 @@ struct Bag
             contained_bags.push_back(bags);
           }
 
-          void add_container(std::string name)
+          void add_container_bag(std::string bag_name)
           {
-           bags_this_one_is_contained_in.push_back(name);
+            container_bags.push_back(bag_name);
           }
         };
 
@@ -31,26 +30,26 @@ public:
     {
     };
 
-    std::unordered_map<std::string, Bag*> bag_index;
+    std::unordered_map<std::string, Bag*> bags_database;
     void calculate();
 
-    void check_uniques(std::vector<std::string> container_list, std::unordered_map<std::string, int> &unique_list)
+    void check_containers(std::vector<std::string> containers_list, std::unordered_map<std::string, int> &containers_map)
     {
-      for (auto bag_name : container_list) {
-        ++unique_list[bag_name];
-        auto new_list = bag_index[bag_name]->bags_this_one_is_contained_in;
-        check_uniques(new_list, unique_list);
+      for(std::string bag_name : containers_list) {
+        containers_map[bag_name]++;
+        std::vector<std::string> new_containers_list = bags_database[bag_name]->container_bags;
+        check_containers(new_containers_list, containers_map);
       }
     }
 
-    int check_nesting(std::vector<bag_pair> bag_list) {
-      int local_sum{0};
-      for (auto b : bag_list) {
-        local_sum += b.second;
-        auto new_list = bag_index[b.first]->contained_bags;
-        local_sum += b.second * check_nesting(new_list);
+    int check_contained(std::vector<bag_pair> bags_list) {
+      int sum = 0;
+      for (bag_pair bag : bags_list) {
+        sum += bag.second;
+        auto new_list = bags_database[bag.first]->contained_bags;
+        sum += bag.second * check_contained(new_list);
       }
-      return local_sum;
+      return sum;
     }
 
 };

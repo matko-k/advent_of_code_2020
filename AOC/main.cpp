@@ -5,6 +5,8 @@
 #include "Day5/day5.h"
 #include "Day6/day6.h"
 #include "Day7/day7.h"
+#include "Day8/day8.h"
+#include "Day9/day9.h"
 
 int main() {
 
@@ -27,7 +29,13 @@ int main() {
   //day6.calculate();
 
   Day7 day7("Luggage processing");
-  day7.calculate();
+  //day7.calculate();
+
+  Day8 day8("Infinite loop");
+  //day8.calculate();
+
+  Day9 day9("Encoding error");
+  //day9.calculate();
 
   return 0;
 }
