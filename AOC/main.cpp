@@ -7,6 +7,7 @@
 #include "Day7/day7.h"
 #include "Day8/day8.h"
 #include "Day9/day9.h"
+#include "Day10/day10.h"
 
 int main() {
 
@@ -36,6 +37,9 @@ int main() {
 
   Day9 day9("Encoding error");
   //day9.calculate();
+
+  Day10 day10("Adapter array");
+  day10.calculate();
 
   return 0;
 }
