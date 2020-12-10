@@ -57,88 +57,88 @@ void Day10::calculate() {
 
   double count = 0;
 
-  std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+  std::vector<int> valid_neighbours = count_valid_neighbours(joltages);
 
-  abracadabra(joltages, count);
+  abracadabra(valid_neighbours, count);
 
-  std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-
-  std::cout<<"Total ways: "<<count<<std::endl;
-  std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[ms]" << std::endl;
-  std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::seconds>(end - begin).count() << "[s]" << std::endl;
-
+  std::cout << std::fixed;
+  std::cout << std::setprecision(20);
+  std::cout<<"Total ways : "<<count<<std::endl;
 
 }
-
 
 void Day10::abracadabra(std::vector<int> joltages, double &count)
 {
-  if(joltages.size() < 2)
-  {
-    count++;
-    return;
-  }
-  std::vector<bool> valid_joltages = find_joltages(joltages);
+  double first = joltages[joltages.size()-3];
+  double second = joltages[joltages.size()-2];
+  double third = joltages[joltages.size()-1];
+  double old_first;
 
-  for(int i = 0; i < valid_joltages.size(); i++)
+  for(int i = joltages.size() - 4; i >= 0; i--)
   {
-    if(valid_joltages[i])
+    if(joltages[i] == 1)
     {
-      std::vector<int> new_joltages;
-      switch (i) {
-        case 0:
-          new_joltages = joltages;
-          new_joltages.pop_back();
-          abracadabra(new_joltages, count);
-          break;
-        case 1:
-          new_joltages = joltages;
-          new_joltages.pop_back();
-          new_joltages.pop_back();
-          abracadabra(new_joltages, count);
-          break;
-        case 2:
-          new_joltages = joltages;
-          new_joltages.pop_back();
-          new_joltages.pop_back();
-          new_joltages.pop_back();
-          abracadabra(new_joltages, count);
-          break;
-        default:
-          break;
-      }
+      old_first = first;
+      first = first;
+      third = second;
+      second = old_first;
+    }
+    if(joltages[i] == 2)
+    {
+      old_first = first;
+      first = first + second;
+      third = second;
+      second = old_first;
+    }
+    if(joltages[i] == 3)
+    {
+      old_first = first;
+      first = first + second + third;
+      third = second;
+      second = old_first;
+
     }
   }
-
-  return;
+  count = first;
 }
 
-std::vector<bool> Day10::find_joltages(const std::vector<int>& joltages)
+std::vector<int> Day10::count_valid_neighbours(const std::vector<int>& joltages)
 {
-  int diff1, diff2, diff3;
-  std::vector<bool> valid_joltages {};
-
-  switch (joltages.size()) {
-    case 2:
-      diff1 = joltages[joltages.size()-1] - joltages[joltages.size()-2];
-      valid_joltages.push_back(diff1 < 4);
-      break;
-
-    case 3:
-      diff1 = joltages[joltages.size()-1] - joltages[joltages.size()-2];
-      diff2 = joltages[joltages.size()-1] - joltages[joltages.size()-3];
-      valid_joltages.push_back(diff1 < 4);
-      valid_joltages.push_back(diff2 < 4);
-      break;
-
-    default:
-      diff1 = joltages[joltages.size()-1] - joltages[joltages.size()-2];
-      diff2 = joltages[joltages.size()-1] - joltages[joltages.size()-3];
-      diff3 = joltages[joltages.size()-1] - joltages[joltages.size()-4];
-      valid_joltages.push_back(diff1 < 4);
-      valid_joltages.push_back(diff2 < 4);
-      valid_joltages.push_back(diff3 < 4);
+  std::vector<int> valid_neighbours_count = {};
+  for(int i = 0; i < joltages.size() - 3; i++)
+  {
+    int count = 0;
+    if(std::find(joltages.begin()+i+1, joltages.begin()+i+4,joltages[i] + 1) != joltages.begin()+i+4)
+    {
+      count++;
+    }
+    if(std::find(joltages.begin()+i+1, joltages.begin()+i+4,joltages[i] + 2) != joltages.begin()+i+4)
+    {
+      count++;
+    }
+    if(std::find(joltages.begin()+i+1, joltages.begin()+i+4,joltages[i] + 3) != joltages.begin()+i+4)
+    {
+      count++;
+    }
+    valid_neighbours_count.push_back(count);
   }
 
-  return valid_joltages;
+  int count = 0;
+  if(std::find(joltages.end()-2, joltages.end(),joltages[joltages.size()-3] + 1) != joltages.end())
+  {
+    count++;
+  }
+  if(std::find(joltages.end()-2, joltages.end(),joltages[joltages.size()-3] + 2) != joltages.end())
+  {
+    count++;
+  }
+  if(std::find(joltages.end()-2, joltages.end(),joltages[joltages.size()-3] + 3) != joltages.end())
+  {
+    count++;
+  }
+  valid_neighbours_count.push_back(count);
+  valid_neighbours_count.push_back(1);
+  valid_neighbours_count.push_back(1);
+
+  return valid_neighbours_count;
 }

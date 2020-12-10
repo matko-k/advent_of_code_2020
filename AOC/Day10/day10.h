@@ -10,7 +10,7 @@ public:
 
     void calculate();
     void abracadabra(std::vector<int> joltages, double &count);
-    std::vector<bool> find_joltages(const std::vector<int>& joltages);
+    std::vector<int> count_valid_neighbours(const std::vector<int>& joltages);
 };
 
 
