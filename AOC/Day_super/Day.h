@@ -10,6 +10,7 @@
 #include <unordered_map>
 #include <sstream>
 #include <bits/stdc++.h>
+#include <regex>
 
 class Day
 {

@@ -1,5 +1,4 @@
 #include "dayXX.h"
-#include <regex>
 
 void DayXX::calculate()
 {

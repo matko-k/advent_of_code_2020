@@ -9,6 +9,7 @@
 #include "Day9/day9.h"
 #include "Day10/day10.h"
 #include "Day11/day11.h"
+#include "Day12/day12.h"
 
 int main() {
 
@@ -43,7 +44,10 @@ int main() {
   //day10.calculate();
 
   Day11 day11("Seating System");
-  day11.calculate();
+  //day11.calculate();
+
+  Day12 day12("Rain Risk");
+  day12.calculate();
 
   return 0;
 }
