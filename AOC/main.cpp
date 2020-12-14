@@ -11,6 +11,9 @@
 #include "Day11/day11.h"
 #include "Day12/day12.h"
 #include "Day13/day13.h"
+#include "Day14/day14.h"
+
+
 
 int main() {
 
@@ -51,7 +54,10 @@ int main() {
   //day12.calculate();
 
   Day13 day13("Shuttle Search");
-  day13.calculate();
+  //day13.calculate();
+
+  Day14 day14("Docking Data");
+  day14.calculate();
 
   return 0;
 }
