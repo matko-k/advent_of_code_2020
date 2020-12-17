@@ -13,6 +13,7 @@
 #include "Day13/day13.h"
 #include "Day14/day14.h"
 #include "Day15/day15.h"
+#include "Day16/day16.h"
 
 
 
@@ -61,7 +62,10 @@ int main() {
   //day14.calculate();
 
   Day15 day15("Rambunctious Recitation");
-  day15.calculate();
+  //day15.calculate();
+
+  Day16 day16("Ticket Translation");
+  day16.calculate();
 
   return 0;
 }
