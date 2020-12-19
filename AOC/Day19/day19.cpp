@@ -146,14 +146,6 @@ Rule Day19::get_rule_sub_piped(std::string line)
 bool Day19::matches_rules(const std::string& line, std::unordered_map<int, Rule>& rules, int rule_number, int& match_size)
 {
 
-  //infinite loop detection
-  if(match_size > line.size() + 10)
-  {
-    int new_size = 0;
-    if(matches_rules(line.substr(line.size() -5, 5), rules, 31, new_size)) return true;
-    return false;
-  }
-
   Rule rule = rules[rule_number];
 
   if(rule.type == RuleType::CHARACTER)
