@@ -18,6 +18,7 @@
 #include "Day18/day18.h"
 #include "Day19/day19.h"
 #include "Day20/day20.h"
+#include "Day21/day21.h"
 
 int main() {
 
@@ -79,7 +80,10 @@ int main() {
   //day19.calculate();
 
   Day20 day20("Jurassic Jigsaw");
-  day20.calculate();
+  //day20.calculate();
+
+  Day21 day21("Allergen Assessment");
+  day21.calculate();
 
   return 0;
 }
