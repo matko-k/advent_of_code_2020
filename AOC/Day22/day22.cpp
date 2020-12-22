@@ -108,7 +108,6 @@ int Day22::get_recursive_combat_winner(std::vector<int>& player1_deck, std::vect
 
   std::vector<std::string> game_statuses;
 
-  int game_winner = 0;
   int round = 0;
 
   while(true) {
