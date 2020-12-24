@@ -27,4 +27,5 @@ add_executable(Day1
         Day20/day20.cpp
         Day21/day21.cpp
         Day22/day22.cpp
-        Day23/day23.cpp)
+        Day23/day23.cpp
+        Day24/day24.cpp)

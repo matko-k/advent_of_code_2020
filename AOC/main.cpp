@@ -21,6 +21,7 @@
 #include "Day21/day21.h"
 #include "Day22/day22.h"
 #include "Day23/day23.h"
+#include "Day24/day24.h"
 
 int main() {
 
@@ -91,7 +92,10 @@ int main() {
   //day22.calculate();
 
   Day23 day23("Crab Cups");
-  day23.calculate();
+  //day23.calculate();
+
+  Day24 day24("Lobby Layout");
+  day24.calculate();
 
   return 0;
 }
